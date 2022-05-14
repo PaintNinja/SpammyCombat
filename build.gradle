@@ -13,7 +13,7 @@ plugins {
 }
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.18.2-1.0'
+version = '1.18.2-1.0.1'
 group = 'ga.ozli.minecraftmods.spammycombat' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'spammycombat'
 
