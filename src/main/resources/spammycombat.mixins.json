@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "ga.ozli.minecraftmods.spammycombat.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "spammycombat.refmap.json",
+  "mixins": [
+    "SwordSweepDisablerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

@@ -10,20 +10,21 @@ buildscript {
 
 plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
-    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT' // while SpammyCombat doesn't use any Mixins at all, some of the dev-only mods I use to speed up testing do
+
+    // on 1.16.5, SpammyCombat uses one mixin due to a Forge 1.17+ feature not being able to be backported to 1.16.5 due to the breaking changes it would involve
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.18.2-1.1.0'
+version = '1.16.5-1.1.0'
 group = 'ga.ozli.minecraftmods.spammycombat' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'spammycombat'
 
-// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'parchment', version: '2022.05.02-1.18.2'
+    mappings channel: 'parchment', version: '2022.03.06-1.16.5'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -34,8 +35,7 @@ minecraft {
             // property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'spammycombat'
+            arg "-mixin.config=spammycombat.mixins.json"
 
             mods {
                 spammycombat {
@@ -50,27 +50,7 @@ minecraft {
             // property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'spammycombat'
-
-            mods {
-                spammycombat {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        // This run config launches GameTestServer and runs all registered gametests, then exits.
-        // By default, the server will crash when no gametests are provided.
-        // The gametest system is also enabled by default for other run configs under the /test command.
-        gameTestServer {
-            workingDirectory project.file('run')
-
-            // property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'spammycombat'
+            arg "-mixin.config=spammycombat.mixins.json"
 
             mods {
                 spammycombat {
@@ -86,7 +66,9 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'spammycombat', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
+            arg "-mixin.config=spammycombat.mixins.json"
 
             mods {
                 spammycombat {
@@ -119,17 +101,19 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.19'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.35'
+
+    // Mixin
+    annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
     // LazyDFU in dev env - speeds up initial load times at the cost of lag spikes in-game
-    runtimeOnly fg.deobf('curse.maven:lazydfu-460819:3544496')
+    runtimeOnly fg.deobf('curse.maven:lazydfu-460819:3209972')
 
     // Ksyxis in dev env - speeds up initial world load times by lazy loading spawn chunks at
     // the cost of lag-spikes when someone joins from previously empty
-    runtimeOnly fg.deobf('curse.maven:ksyxis-537533:3502166')
+    runtimeOnly fg.deobf('curse.maven:ksyxis-537533:3502164')
 }
 
-// Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
         attributes([
@@ -139,7 +123,8 @@ jar {
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "Paint_Ninja",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "spammycombat.mixins.json",
         ])
     }
 }
@@ -150,4 +135,6 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 
-mixin {}
+mixin {
+    add sourceSets.main, "spammycombat.refmap.json"
+}

@@ -1,8 +1,8 @@
 package ga.ozli.minecraftmods.spammycombat.client;
 
 import ga.ozli.minecraftmods.spammycombat.SpammyCombat;
-import net.minecraft.client.AttackIndicatorStatus;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.AttackIndicatorStatus;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,7 +17,7 @@ public class ClientModLifecycleEvents {
     @SubscribeEvent
     public static void onLoadComplete(final FMLLoadCompleteEvent event) {
         event.enqueueWork(() -> {
-            var mc = Minecraft.getInstance();
+            Minecraft mc = Minecraft.getInstance();
             mc.options.attackIndicator = AttackIndicatorStatus.OFF;
             mc.options.save();
         });
