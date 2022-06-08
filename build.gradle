@@ -1,21 +1,13 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.parchmentmc.org' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'org.parchmentmc:librarian:1.+'
-    }
-}
-
 plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
-    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT' // while SpammyCombat doesn't use any Mixins at all, some of the dev-only mods I use to speed up testing do
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    //id 'org.spongepowered.mixin' version '0.7-SNAPSHOT' // while SpammyCombat doesn't use any Mixins at all, some of the dev-only mods I use to speed up testing do
 }
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 version = '1.18.2-1.1.0'
 group = 'ga.ozli.minecraftmods.spammycombat' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = '1.19-1.1.0'
+group = 'ga.ozli.minecraftmods.spammycombat'
 archivesBaseName = 'spammycombat'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
@@ -23,7 +15,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'parchment', version: '2022.05.02-1.18.2'
+    mappings channel: 'parchment', version: '1.18.2-2022.06.05-1.19'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -86,7 +78,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'spammycombat', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 spammycombat {
@@ -119,14 +111,14 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.19'
+    minecraft 'net.minecraftforge:forge:1.19-41.0.1'
 
     // LazyDFU in dev env - speeds up initial load times at the cost of lag spikes in-game
-    runtimeOnly fg.deobf('curse.maven:lazydfu-460819:3544496')
+    //runtimeOnly fg.deobf('curse.maven:lazydfu-460819:3544496')
 
     // Ksyxis in dev env - speeds up initial world load times by lazy loading spawn chunks at
     // the cost of lag-spikes when someone joins from previously empty
-    runtimeOnly fg.deobf('curse.maven:ksyxis-537533:3502166')
+    //runtimeOnly fg.deobf('curse.maven:ksyxis-537533:3502166')
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
@@ -150,4 +142,4 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 
-mixin {}
+//mixin {}

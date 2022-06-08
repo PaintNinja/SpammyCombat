@@ -2,10 +2,9 @@ package ga.ozli.minecraftmods.spammycombat.client;
 
 import ga.ozli.minecraftmods.spammycombat.SpammyCombat;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.Option;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.screens.VideoSettingsScreen;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,7 +24,7 @@ public class ClientForgeEvents {
     public static void onPostScreenInit(final ScreenEvent.InitScreenEvent.Post event) {
         if (event.getScreen() instanceof VideoSettingsScreen screen) {
             @Nullable
-            final var option = screen.list.findOption(Option.ATTACK_INDICATOR);
+            final var option = screen.list.findOption(screen.options.attackIndicator());
 
             if (option != null) {
                 OPTION = option;
@@ -46,7 +45,7 @@ public class ClientForgeEvents {
                 final int mouseY = event.getMouseY();
                 if (isMouseOver(OPTION, mouseX, mouseY)) {
                     final var tooltip = Minecraft.getInstance().font
-                            .split(new TranslatableComponent("spammycombat.options.attackIndicator.tooltip"), 200);
+                            .split(Component.translatable("spammycombat.options.attackIndicator.tooltip"), 200);
                     screen.renderTooltip(event.getPoseStack(), tooltip, mouseX, mouseY);
                 }
             }
