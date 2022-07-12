@@ -21,7 +21,7 @@ public class ClientForgeEvents {
      * Disable the attack indicator option in the video settings screen so that it can't be clicked.
      */
     @SubscribeEvent
-    public static void onPostScreenInit(final ScreenEvent.InitScreenEvent.Post event) {
+    public static void onPostScreenInit(final ScreenEvent.Init.Post event) {
         if (event.getScreen() instanceof VideoSettingsScreen screen) {
             @Nullable
             final var option = screen.list.findOption(screen.options.attackIndicator());
@@ -38,7 +38,7 @@ public class ClientForgeEvents {
      * Vanilla doesn't render tooltips for disabled buttons, so let's manually do it.
      */
     @SubscribeEvent
-    public static void onPostScreenDraw(final ScreenEvent.DrawScreenEvent.Post event) {
+    public static void onPostScreenDraw(final ScreenEvent.Render.Post event) {
         if (event.getScreen() instanceof VideoSettingsScreen screen) {
             if (OPTION != null) {
                 final int mouseX = event.getMouseX();

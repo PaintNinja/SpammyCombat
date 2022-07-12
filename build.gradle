@@ -4,9 +4,7 @@ plugins {
     //id 'org.spongepowered.mixin' version '0.7-SNAPSHOT' // while SpammyCombat doesn't use any Mixins at all, some of the dev-only mods I use to speed up testing do
 }
 
-version = '1.18.2-1.1.0'
-group = 'ga.ozli.minecraftmods.spammycombat' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-version = '1.19-1.1.0'
+version = '1.19-1.1.1'
 group = 'ga.ozli.minecraftmods.spammycombat'
 archivesBaseName = 'spammycombat'
 
@@ -111,7 +109,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.0.1'
+    minecraft 'net.minecraftforge:forge:1.19-41.0.98'
 
     // LazyDFU in dev env - speeds up initial load times at the cost of lag spikes in-game
     //runtimeOnly fg.deobf('curse.maven:lazydfu-460819:3544496')
@@ -134,9 +132,9 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
-}
 
-jar.finalizedBy('reobfJar')
+    finalizedBy 'reobfJar'
+}
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation

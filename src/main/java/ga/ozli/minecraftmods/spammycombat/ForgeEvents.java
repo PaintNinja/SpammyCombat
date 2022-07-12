@@ -9,8 +9,8 @@ import net.minecraftforge.fml.common.Mod;
 public class ForgeEvents {
 
     @SubscribeEvent
-    public static void onEntityUpdate(final LivingEvent.LivingUpdateEvent event) {
-        if (event.getEntityLiving() instanceof final Player player)
+    public static void onEntityUpdate(final LivingEvent.LivingTickEvent event) {
+        if (event.getEntity() instanceof final Player player)
             player.attackStrengthTicker = 20;
     }
 
