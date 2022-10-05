@@ -14,7 +14,7 @@ plugins {
 }
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.18.2-1.1.0'
+version = '1.18.2-1.1.2'
 group = 'ga.ozli.minecraftmods.spammycombat' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'spammycombat'
 
@@ -119,7 +119,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.19'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.1.80'
 
     // LazyDFU in dev env - speeds up initial load times at the cost of lag spikes in-game
     runtimeOnly fg.deobf('curse.maven:lazydfu-460819:3544496')
