@@ -17,7 +17,7 @@ A mod that aims to restore the old click spamming combat from Minecraft 1.8 and 
 [[dependencies.spammycombat]]
     modId="forge"
     mandatory=true
-    versionRange="[41.0.98,)"
+    versionRange="[41.1.0,)"
     ordering="NONE"
     side="BOTH"
 

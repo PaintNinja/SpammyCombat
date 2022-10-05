@@ -24,7 +24,9 @@ public class ClientForgeEvents {
     public static void onPostScreenInit(final ScreenEvent.Init.Post event) {
         if (event.getScreen() instanceof VideoSettingsScreen screen) {
             @Nullable
-            final var option = screen.list.findOption(screen.options.attackIndicator());
+            final AbstractWidget option = OptifineWorkarounds.IS_OPTIFINE_INSTALLED
+                    ? OptifineWorkarounds.getAttackIndicatorButton(screen)
+                    : screen.list.findOption(screen.options.attackIndicator());
 
             if (option != null) {
                 OPTION = option;
@@ -49,7 +51,6 @@ public class ClientForgeEvents {
                     screen.renderTooltip(event.getPoseStack(), tooltip, mouseX, mouseY);
                 }
             }
-
         }
     }
 
