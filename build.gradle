@@ -14,7 +14,7 @@ plugins {
 }
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.17.1-1.1.0'
+version = '1.17.1-1.1.2'
 group = 'ga.ozli.minecraftmods.spammycombat' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'spammycombat'
 
@@ -94,9 +94,6 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.17.1-37.1.1'
-
-    // LazyDFU in dev env - speeds up initial load times at the cost of lag spikes in-game
-    runtimeOnly fg.deobf('curse.maven:lazydfu-460819:3209972')
 
     // Ksyxis in dev env - speeds up initial world load times by lazy loading spawn chunks at
     // the cost of lag-spikes when someone joins from previously empty
