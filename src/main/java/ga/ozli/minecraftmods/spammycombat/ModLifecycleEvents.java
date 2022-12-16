@@ -12,9 +12,7 @@ public class ModLifecycleEvents {
 
     @SubscribeEvent
     public static void onCommonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            ToolActions.DEFAULT_SWORD_ACTIONS.remove(SWORD_SWEEP);
-        });
+        event.enqueueWork(() -> ToolActions.DEFAULT_SWORD_ACTIONS.remove(SWORD_SWEEP));
     }
 
 }

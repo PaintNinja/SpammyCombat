@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[41,)"
+loaderVersion="[44,)"
 license="MIT"
 issueTrackerURL="https://github.com/PaintNinja/SpammyCombat/issues"
 
@@ -17,13 +17,13 @@ A mod that aims to restore the old click spamming combat from Minecraft 1.8 and 
 [[dependencies.spammycombat]]
     modId="forge"
     mandatory=true
-    versionRange="[41.1.0,)"
+    versionRange="[44.0.30,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.spammycombat]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19,1.20)" # This version range declares a minimum of the current minecraft version up to but not including the next major version
+    versionRange="[1.19.3]"
     ordering="NONE"
     side="BOTH"

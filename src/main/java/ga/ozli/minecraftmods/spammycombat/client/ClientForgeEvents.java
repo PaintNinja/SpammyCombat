@@ -22,7 +22,7 @@ public class ClientForgeEvents {
      */
     @SubscribeEvent
     public static void onPostScreenInit(final ScreenEvent.Init.Post event) {
-        if (event.getScreen() instanceof VideoSettingsScreen screen) {
+        if (event.getScreen() instanceof final VideoSettingsScreen screen) {
             @Nullable
             final AbstractWidget option = OptifineWorkarounds.IS_OPTIFINE_INSTALLED
                     ? OptifineWorkarounds.getAttackIndicatorButton(screen)
@@ -41,7 +41,7 @@ public class ClientForgeEvents {
      */
     @SubscribeEvent
     public static void onPostScreenDraw(final ScreenEvent.Render.Post event) {
-        if (event.getScreen() instanceof VideoSettingsScreen screen) {
+        if (event.getScreen() instanceof final VideoSettingsScreen screen) {
             if (OPTION != null) {
                 final int mouseX = event.getMouseX();
                 final int mouseY = event.getMouseY();
