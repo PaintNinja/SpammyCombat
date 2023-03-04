@@ -3,7 +3,7 @@ plugins {
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = '1.19.x-1.1.2'
+version = '1.19.012-1.1.3'
 group = 'ga.ozli.minecraftmods.spammycombat'
 archivesBaseName = 'spammycombat'
 
@@ -112,7 +112,7 @@ dependencies {
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
-jar {
+tasks.named('jar', Jar).configure {
     manifest {
         attributes([
                 "Specification-Title"     : "spammycombat",
@@ -131,5 +131,3 @@ jar {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
-
-//mixin {}
