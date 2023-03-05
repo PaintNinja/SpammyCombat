@@ -10,7 +10,7 @@ public class ForgeEvents {
 
     @SubscribeEvent
     public static void onEntityUpdate(final LivingEvent.LivingUpdateEvent event) {
-        if (event.getEntityLiving() instanceof final Player player)
+        if (event.getEntityLiving() instanceof final Player player && Config.canSpamClickWith(player.getMainHandItem()))
             player.attackStrengthTicker = 20;
     }
 

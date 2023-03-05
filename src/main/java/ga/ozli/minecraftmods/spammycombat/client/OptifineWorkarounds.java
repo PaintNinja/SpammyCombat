@@ -14,7 +14,7 @@ class OptifineWorkarounds {
         try {
             Class.forName("net.optifine.Config");
             tmp = true;
-        } catch (ClassNotFoundException e) {
+        } catch (final ClassNotFoundException e) {
             tmp = false;
         }
         IS_OPTIFINE_INSTALLED = tmp;

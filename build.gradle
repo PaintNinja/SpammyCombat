@@ -14,7 +14,7 @@ plugins {
 }
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.17.1-1.1.2'
+version = '1.17.1-1.2.0'
 group = 'ga.ozli.minecraftmods.spammycombat' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'spammycombat'
 
@@ -101,7 +101,7 @@ dependencies {
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
-jar {
+tasks.named('jar', Jar).configure {
     manifest {
         attributes([
                 "Specification-Title"     : "spammycombat",
@@ -113,9 +113,9 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
-}
 
-jar.finalizedBy('reobfJar')
+    finalizedBy 'reobfJar'
+}
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
