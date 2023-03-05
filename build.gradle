@@ -14,7 +14,7 @@ plugins {
 }
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.18.2-1.1.2'
+version = '1.18.2-1.1.3'
 group = 'ga.ozli.minecraftmods.spammycombat' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'spammycombat'
 
@@ -23,7 +23,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'parchment', version: '2022.05.02-1.18.2'
+    mappings channel: 'parchment', version: '2022.11.06-1.18.2'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -119,7 +119,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.80'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
 
     // LazyDFU in dev env - speeds up initial load times at the cost of lag spikes in-game
     runtimeOnly fg.deobf('curse.maven:lazydfu-460819:3544496')
@@ -130,7 +130,7 @@ dependencies {
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
-jar {
+tasks.named('jar', Jar).configure {
     manifest {
         attributes([
                 "Specification-Title"     : "spammycombat",
@@ -142,9 +142,9 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
-}
 
-jar.finalizedBy('reobfJar')
+    finalizedBy 'reobfJar'
+}
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation

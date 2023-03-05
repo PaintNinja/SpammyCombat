@@ -17,7 +17,7 @@ public class ClientModLifecycleEvents {
     @SubscribeEvent
     public static void onLoadComplete(final FMLLoadCompleteEvent event) {
         event.enqueueWork(() -> {
-            var mc = Minecraft.getInstance();
+            final var mc = Minecraft.getInstance();
             mc.options.attackIndicator = AttackIndicatorStatus.OFF;
             mc.options.save();
         });
