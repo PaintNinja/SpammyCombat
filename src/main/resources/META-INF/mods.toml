@@ -5,7 +5,8 @@ issueTrackerURL="https://github.com/PaintNinja/SpammyCombat/issues"
 
 [[mods]]
 modId="spammycombat"
-version="${file.jarVersion}"
+#version="${file.jarVersion}"
+version="1.19.3/4-1.2.0"
 displayName="SpammyCombat"
 #updateJSONURL="https://change.me.example.invalid/updates.json"
 displayURL="https://github.com/PaintNinja/SpammyCombat"
@@ -24,6 +25,6 @@ A mod that aims to restore the old click spamming combat from Minecraft 1.8 and 
 [[dependencies.spammycombat]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.3]"
+    versionRange="[1.19.3,1.19.4]"
     ordering="NONE"
     side="BOTH"

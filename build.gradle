@@ -3,7 +3,7 @@ plugins {
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = '1.19.3-1.2.0'
+version = '1.19.34-1.2.0'
 group = 'ga.ozli.minecraftmods.spammycombat'
 archivesBaseName = 'spammycombat'
 
@@ -12,7 +12,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'parchment', version: '2023.02.26-1.19.3'
+    mappings channel: 'parchment', version: '2023.03.12-1.19.3'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -113,7 +113,7 @@ dependencies {
 
 tasks.named('jar', Jar).configure {
     manifest {
-        attributes([
+        attributes(
                 "Specification-Title"     : "spammycombat",
                 "Specification-Vendor"    : "Paint_Ninja",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
@@ -121,7 +121,7 @@ tasks.named('jar', Jar).configure {
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "Paint_Ninja",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
+        )
     }
 
     finalizedBy 'reobfJar'
