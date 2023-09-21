@@ -48,7 +48,7 @@ public class ClientForgeEvents {
                 if (isMouseOver(OPTION, mouseX, mouseY)) {
                     final var tooltip = Minecraft.getInstance().font
                             .split(Component.translatable("spammycombat.options.attackIndicator.tooltip"), 200);
-                    screen.renderTooltip(event.getPoseStack(), tooltip, mouseX, mouseY);
+                    screen.setTooltipForNextRenderPass(tooltip);
                 }
             }
         }
