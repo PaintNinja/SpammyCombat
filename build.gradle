@@ -1,10 +1,10 @@
 plugins {
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
     id 'org.groovymc.modsdotgroovy' version '1.4.1'
 }
 
-version = '1.20.2-1.3.1'
+version = '1.20.4-1.3.1'
 group = 'ga.ozli.minecraftmods.spammycombat'
 archivesBaseName = 'spammycombat'
 
@@ -13,7 +13,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'parchment', version: '1.20.1-2023.09.03-1.20.2'
+    mappings channel: 'parchment', version: '1.20.2-2023.12.10-1.20.4'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -109,7 +109,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.2-48.0.0'
+    minecraft 'net.minecraftforge:forge:1.20.4-49.0.30'
 }
 
 tasks.named('jar', Jar).configure {
@@ -133,4 +133,14 @@ tasks.withType(JavaCompile).configureEach {
 
 modsDotGroovy {
     dslVersion = '1.5.0'
+}
+
+// Merge the resources and classes into the same directory.
+// This is done because java expects modules to be in a single directory.
+// And if we have it in multiple we have to do performance intensive hacks like having the UnionFileSystem
+// This will eventually be migrated to ForgeGradle so modders don't need to manually do it. But that is later.
+sourceSets.each {
+    def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
+    it.output.resourcesDir = dir
+    it.java.destinationDirectory = dir
 }

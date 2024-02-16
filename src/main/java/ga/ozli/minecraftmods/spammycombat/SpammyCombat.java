@@ -16,6 +16,6 @@ public class SpammyCombat {
         LOGGER.info("SpammyCombat starting");
         final var modLoadingContext = ModLoadingContext.get();
         modLoadingContext.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-        modLoadingContext.registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(() -> IExtensionPoint.DisplayTest.IGNORESERVERONLY, (a, b) -> true));
+        modLoadingContext.registerDisplayTest(IExtensionPoint.DisplayTest.IGNORE_SERVER_VERSION);
     }
 }

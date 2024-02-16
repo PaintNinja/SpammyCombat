@@ -1,6 +1,6 @@
 ModsDotGroovy.make {
     modLoader = 'javafml'
-    loaderVersion = '[48,)'
+    loaderVersion = '[49,)'
 
     license = 'MIT'
     issueTrackerUrl = 'https://github.com/PaintNinja/SpammyCombat/issues'
@@ -16,8 +16,8 @@ ModsDotGroovy.make {
         displayTest = DisplayTest.IGNORE_ALL_VERSION
 
         dependencies {
-            forge = '>=48.0.0'
-            minecraft = '[1.20.2,1.21)'
+            forge = '>=49.0.30'
+            minecraft = '[1.20.4,1.21)'
         }
     }
 }

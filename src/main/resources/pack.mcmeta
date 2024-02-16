@@ -1,8 +1,6 @@
 {
     "pack": {
         "description": "SpammyCombat resources",
-        "pack_format": 18,
-        "forge:resource_pack_format": 18,
-        "forge:data_pack_format": 18
+        "pack_format": 22
     }
 }
