@@ -11,6 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -40,7 +41,8 @@ final class Config {
         BLACKLIST = USE_BLACKLIST
                 ? BLACKLIST_STRINGS.get().stream()
                         .map(itemName -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName)))
-                        .collect(Collectors.toSet())
+                        .filter(Objects::nonNull)
+                        .collect(Collectors.toUnmodifiableSet())
                 : Collections.emptySet();
     }
 }

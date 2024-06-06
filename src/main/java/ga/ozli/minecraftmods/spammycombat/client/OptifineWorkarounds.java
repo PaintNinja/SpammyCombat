@@ -6,7 +6,9 @@ import net.minecraft.client.gui.screens.VideoSettingsScreen;
 import java.lang.reflect.Method;
 import java.util.List;
 
-class OptifineWorkarounds {
+final class OptifineWorkarounds {
+    private OptifineWorkarounds() {}
+
     static final boolean IS_OPTIFINE_INSTALLED;
     
     static {

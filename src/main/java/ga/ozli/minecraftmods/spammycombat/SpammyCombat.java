@@ -16,6 +16,6 @@ public class SpammyCombat {
         LOGGER.info("SpammyCombat starting");
         final var modLoadingContext = ModLoadingContext.get();
         modLoadingContext.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-        modLoadingContext.registerDisplayTest(IExtensionPoint.DisplayTest.IGNORE_SERVER_VERSION);
+        modLoadingContext.registerDisplayTest(IExtensionPoint.DisplayTest.IGNORE_ALL_VERSION);
     }
 }
