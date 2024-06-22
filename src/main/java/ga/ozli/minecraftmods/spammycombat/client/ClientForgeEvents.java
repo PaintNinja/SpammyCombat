@@ -3,7 +3,7 @@ package ga.ozli.minecraftmods.spammycombat.client;
 import ga.ozli.minecraftmods.spammycombat.SpammyCombat;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.screens.VideoSettingsScreen;
+import net.minecraft.client.gui.screens.options.VideoSettingsScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ScreenEvent;
@@ -11,7 +11,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
 
-@Mod.EventBusSubscriber(modid = SpammyCombat.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+// todo: fix
+//@Mod.EventBusSubscriber(modid = SpammyCombat.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ClientForgeEvents {
 
     @Nullable
@@ -23,15 +24,15 @@ public class ClientForgeEvents {
     @SubscribeEvent
     public static void onPostScreenInit(final ScreenEvent.Init.Post event) {
         if (event.getScreen() instanceof final VideoSettingsScreen screen) {
-            @Nullable
-            final AbstractWidget option = OptifineWorkarounds.IS_OPTIFINE_INSTALLED
-                    ? OptifineWorkarounds.getAttackIndicatorButton(screen)
-                    : screen.list.findOption(screen.options.attackIndicator());
+//            @Nullable
+//            final AbstractWidget option = OptifineWorkarounds.IS_OPTIFINE_INSTALLED
+//                    ? OptifineWorkarounds.getAttackIndicatorButton(screen)
+//                    : screen.list.findOption(screen.options.attackIndicator());
 
-            if (option != null) {
-                OPTION = option;
-                OPTION.active = false;
-            }
+//            if (option != null) {
+//                OPTION = option;
+//                OPTION.active = false;
+//            }
         }
     }
 

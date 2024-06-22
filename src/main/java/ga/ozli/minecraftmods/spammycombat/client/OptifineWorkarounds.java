@@ -1,7 +1,7 @@
 package ga.ozli.minecraftmods.spammycombat.client;
 
 import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.screens.VideoSettingsScreen;
+import net.minecraft.client.gui.screens.options.VideoSettingsScreen;
 
 import java.lang.reflect.Method;
 import java.util.List;

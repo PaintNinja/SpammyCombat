@@ -27,7 +27,7 @@ final class Config {
     private static Set<Item> BLACKLIST;
 
     private static boolean validateItemName(final Object obj) {
-        return obj instanceof final String itemName && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(itemName));
+        return obj instanceof final String itemName && ForgeRegistries.ITEMS.containsKey(ResourceLocation.tryParse(itemName));
     }
 
     static boolean canSpamClickWith(final ItemStack itemStack) {
@@ -40,7 +40,7 @@ final class Config {
 
         BLACKLIST = USE_BLACKLIST
                 ? BLACKLIST_STRINGS.get().stream()
-                        .map(itemName -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName)))
+                        .map(itemName -> ForgeRegistries.ITEMS.getValue(ResourceLocation.tryParse(itemName)))
                         .filter(Objects::nonNull)
                         .collect(Collectors.toUnmodifiableSet())
                 : Collections.emptySet();
