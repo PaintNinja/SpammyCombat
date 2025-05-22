@@ -1,6 +1,7 @@
 ModsDotGroovy.make {
     modLoader = 'javafml'
     loaderVersion = '[50,)'
+    clientSideOnly = true
 
     license = 'MIT'
     issueTrackerUrl = 'https://github.com/PaintNinja/SpammyCombat/issues'
@@ -13,11 +14,9 @@ ModsDotGroovy.make {
         description = 'A mod that aims to restore the old click spamming combat from Minecraft 1.8 and older.'
         displayUrl = 'https://www.curseforge.com/minecraft/mc-mods/spammycombat'
 
-        displayTest = DisplayTest.IGNORE_ALL_VERSION
-
         dependencies {
-            forge = '>=51.0.17'
-            minecraft = '[1.21,1.22)'
+            forge = '>=55.0.20'
+            minecraft = '[1.21.5,1.22)'
         }
     }
 }
