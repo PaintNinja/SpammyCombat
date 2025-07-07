@@ -15,8 +15,8 @@ ModsDotGroovy.make {
         displayUrl = 'https://www.curseforge.com/minecraft/mc-mods/spammycombat'
 
         dependencies {
-            forge = '>=55.0.20'
-            minecraft = '[1.21.5,1.22)'
+            forge = '>=57.0.2'
+            minecraft = '[1.21.7,1.22)'
         }
     }
 }

@@ -1,7 +1,7 @@
 package ga.ozli.minecraftmods.spammycombat;
 
 import net.minecraftforge.common.ToolActions;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
